@@ -18,8 +18,27 @@ namespace Assignment4
         private string? instructions;
         private FoodCategory category;
         private string name;
+        private readonly uint maxNumberOfIngedients;
 
-        public string Name { 
+        public string Ingedients
+        {
+            get; set;
+        }
+        public string Instructions
+        {
+            get; set;
+        }
+        public string Category
+        {
+            get; set;
+        }
+        public uint MaxNumberOfIngedients
+        {
+            get { return maxNumberOfIngedients; }
+        }
+
+        public string Name 
+        { 
             get 
             { 
                 return name; 
@@ -30,6 +49,7 @@ namespace Assignment4
                     name = value; 
             } 
         }
+
 
         public Recipe(int maxNumberOfIngredients)
         {
