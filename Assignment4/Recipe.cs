@@ -17,5 +17,68 @@ namespace Assignment4
         private string[]? ingredients;
         private string? instructions;
         private FoodCategory category;
+        private string name;
+
+        public string Name { 
+            get 
+            { 
+                return name; 
+            } 
+            set 
+            {
+                if (!String.IsNullOrEmpty(value))
+                    name = value; 
+            } 
+        }
+
+        public Recipe(int maxNumberOfIngredients)
+        {
+
+        }
+
+        public bool AddIngredient(string name)
+        {
+            return false;
+        }
+
+        public bool CheckIngredientAt(string name)
+        {
+            return false;
+        }
+
+        private bool CheckIndex(string name)
+        {
+            return false;
+        }
+
+        public bool CheckNumberOfIngredients(string name)
+        {
+            return false;
+        }
+
+        public bool DefaultValues(string name)
+        {
+            return false;
+        }
+
+        public bool DeleteIngedientAt(string name)
+        {
+            return false;
+        }
+
+        public bool FindVacantPosition(string name)
+        {
+            return false;
+        }
+
+        public bool GetIngredientsStrin(string name)
+        {
+            return false;
+        }
+
+        public bool ToString(string name)
+        {
+            return false;
+        }
     }
 }
