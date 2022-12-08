@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grpAddRecipe = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnAddRecipe = new System.Windows.Forms.Button();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.btnAddIngredients = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.lblInstructions = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.grpAddRecipe.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,14 @@
             this.grpAddRecipe.TabStop = false;
             this.grpAddRecipe.Text = "Add New Recipe";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(28, 196);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(513, 362);
+            this.textBox1.TabIndex = 7;
+            // 
             // btnAddRecipe
             // 
             this.btnAddRecipe.Location = new System.Drawing.Point(26, 584);
@@ -72,6 +80,7 @@
             this.btnAddRecipe.TabIndex = 6;
             this.btnAddRecipe.Text = "Add recipe";
             this.btnAddRecipe.UseVisualStyleBackColor = true;
+            this.btnAddRecipe.Click += new System.EventHandler(this.btnAddRecipe_Click);
             // 
             // cmbCategory
             // 
@@ -89,6 +98,7 @@
             this.btnAddIngredients.TabIndex = 3;
             this.btnAddIngredients.Text = "Add Ingredients";
             this.btnAddIngredients.UseVisualStyleBackColor = true;
+            this.btnAddIngredients.Click += new System.EventHandler(this.btnAddIngredients_Click);
             // 
             // lblCategory
             // 
@@ -150,6 +160,7 @@
             this.lstRecipe.Name = "lstRecipe";
             this.lstRecipe.Size = new System.Drawing.Size(631, 479);
             this.lstRecipe.TabIndex = 4;
+            this.lstRecipe.SelectedIndexChanged += new System.EventHandler(this.lstRecipe_SelectedIndexChanged);
             // 
             // btnEditStart
             // 
@@ -159,6 +170,7 @@
             this.btnEditStart.TabIndex = 5;
             this.btnEditStart.Text = "Edit-Begin";
             this.btnEditStart.UseVisualStyleBackColor = true;
+            this.btnEditStart.Click += new System.EventHandler(this.btnEditStart_Click);
             // 
             // btnEditFinish
             // 
@@ -168,6 +180,7 @@
             this.btnEditFinish.TabIndex = 6;
             this.btnEditFinish.Text = "Edit-Finish";
             this.btnEditFinish.UseVisualStyleBackColor = true;
+            this.btnEditFinish.Click += new System.EventHandler(this.btnEditFinish_Click);
             // 
             // btnDelete
             // 
@@ -177,6 +190,7 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 
@@ -186,6 +200,7 @@
             this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Clear Selection";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lblInstructions
             // 
@@ -195,14 +210,6 @@
             this.lblInstructions.Size = new System.Drawing.Size(466, 25);
             this.lblInstructions.TabIndex = 9;
             this.lblInstructions.Text = "Double click on item for ingediants _cooking instructions!";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(28, 196);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(513, 362);
-            this.textBox1.TabIndex = 7;
             // 
             // FormMain
             // 

@@ -50,55 +50,54 @@ namespace Assignment4
             } 
         }
 
-
         public Recipe(int maxNumberOfIngredients)
         {
 
         }
 
-        public bool AddIngredient(string name)
+        public bool AddIngredient(int index, string value)
         {
             return false;
         }
 
-        public bool CheckIngredientAt(string name)
+        public bool CheckIngredientAt(int index)
         {
             return false;
         }
 
-        private bool CheckIndex(string name)
+        private bool CheckIndex(int index)
         {
             return false;
         }
 
-        public bool CheckNumberOfIngredients(string name)
+        public int CurrentNumberOfIngredients()
         {
-            return false;
+            return 0;
         }
 
-        public bool DefaultValues(string name)
+        public void DefaultValues()
         {
-            return false;
+
         }
 
-        public bool DeleteIngedientAt(string name)
+        public void DeleteIngedientAt(int indwx)
         {
-            return false;
+
         }
 
-        public bool FindVacantPosition(string name)
+        public int FindVacantPosition()
         {
-            return false;
+            return 0;
         }
 
-        public bool GetIngredientsStrin(string name)
+        public string GetIngredientsStrin()
         {
-            return false;
+            return "";
         }
 
-        public bool ToString(string name)
+        public string ToString()
         {
-            return false;
+            return "";
         }
     }
 }
