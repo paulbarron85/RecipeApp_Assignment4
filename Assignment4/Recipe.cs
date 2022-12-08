@@ -12,7 +12,7 @@ namespace Assignment4
     /// • a description (instructions)
     /// • a category as listed in the enum FoodCategory.
     /// </summary>
-    internal class Recipe
+    public class Recipe
     {
         private string[]? ingredients;
         private string? instructions;

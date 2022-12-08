@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment4
 {
-    internal class RecipeManager
+    public class RecipeManager
     {
         private Recipe[] RecipeList;
 
