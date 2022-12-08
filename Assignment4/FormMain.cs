@@ -72,7 +72,7 @@ namespace Assignment4
 
         private void lstRecipe_MouseDoubleClick(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Instructions.....", "Recipe Name");
         }
     }
 }
