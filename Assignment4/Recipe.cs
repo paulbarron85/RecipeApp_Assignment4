@@ -14,30 +14,82 @@ namespace Assignment4
     /// </summary>
     public class Recipe
     {
+        private readonly uint maxNumberOfIngredients;
+        private string? name;
         private string[]? ingredients;
         private string? instructions;
         private FoodCategory category;
-        private string name;
-        private readonly uint maxNumberOfIngedients;
 
-        public string Ingedients
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="maxNumberOfIngredients"></param>
+        public Recipe(uint maxNumberOfIngredients)
         {
-            get; set;
+            if (maxNumberOfIngredients <= 0)
+                this.maxNumberOfIngredients = maxNumberOfIngredients;
         }
-        public string Instructions
-        {
-            get; set;
-        }
-        public string Category
-        {
-            get; set;
-        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public uint MaxNumberOfIngedients
         {
-            get { return maxNumberOfIngedients; }
+            get { return maxNumberOfIngredients; }
         }
 
-        public string Name 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string[] Ingedients
+        {
+            get
+            {
+                return ingredients;
+            }
+            set
+            {
+                //if (!String.IsNullOrEmpty(value))
+                ingredients = value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string? Instructions
+        {
+            get
+            {
+                return instructions;
+            }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                    instructions = value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public FoodCategory Category
+        {
+            get
+            {
+                return category;
+            }
+            set
+            {
+                //if (!String.IsNullOrEmpty(value))
+                category = value;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string? Name 
         { 
             get 
             { 
@@ -50,51 +102,85 @@ namespace Assignment4
             } 
         }
 
-        public Recipe(int maxNumberOfIngredients)
-        {
-
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool AddIngredient(int index, string value)
         {
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool CheckIngredientAt(int index)
         {
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private bool CheckIndex(int index)
         {
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public int CurrentNumberOfIngredients()
         {
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void DefaultValues()
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="indwx"></param>
         public void DeleteIngedientAt(int indwx)
         {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public int FindVacantPosition()
         {
             return 0;
         }
 
-        public string GetIngredientsStrin()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string GetIngredientsString()
         {
             return "";
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ToString()
         {
             return "";
