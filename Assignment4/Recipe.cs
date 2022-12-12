@@ -15,20 +15,10 @@ namespace Assignment4
     public class Recipe
     {
         private readonly uint maxNumberOfIngredients;
-        private string? name;
-        private string[]? ingredients;
-        private string? instructions;
+        private string name;
+        private string[] ingredients;
+        private string instructions;
         private FoodCategory category;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="maxNumberOfIngredients"></param>
-        public Recipe(uint maxNumberOfIngredients)
-        {
-            if (maxNumberOfIngredients <= 0)
-                this.maxNumberOfIngredients = maxNumberOfIngredients;
-        }
 
         /// <summary>
         /// 
@@ -75,21 +65,14 @@ namespace Assignment4
         /// </summary>
         public FoodCategory Category
         {
-            get
-            {
-                return category;
-            }
-            set
-            {
-                //if (!String.IsNullOrEmpty(value))
-                category = value;
-            }
+            get { return category; }
+            set { category = value; }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public string? Name 
+        public string Name 
         { 
             get 
             { 
@@ -103,14 +86,36 @@ namespace Assignment4
         }
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="maxNumberOfIngredients"></param>
+        public Recipe(uint maxNumberOfIngredients)
+        {
+            if (maxNumberOfIngredients > 0)
+                this.maxNumberOfIngredients = maxNumberOfIngredients;
+                ingredients = new string[maxNumberOfIngredients];
+        }
+
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="index"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool AddIngredient(int index, string value)
+        //public bool AddIngredient(int index, string value)
+        public bool AddIngredient(string value)
         {
-            return false;
+            int firstVacantPosition = FindVacantPosition();
+            if (!String.IsNullOrEmpty(value) && firstVacantPosition >= 0 && firstVacantPosition < maxNumberOfIngredients - 1)
+            {
+                ingredients[firstVacantPosition] = value;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -120,7 +125,7 @@ namespace Assignment4
         /// <returns></returns>
         public bool CheckIngredientAt(int index)
         {
-            return false;
+            return ingredients[index] == null;
         }
 
         /// <summary>
@@ -137,9 +142,16 @@ namespace Assignment4
         /// 
         /// </summary>
         /// <returns></returns>
-        public int CurrentNumberOfIngredients()
+        public uint CurrentNumberOfIngredients()
         {
-            return 0;
+            uint currNumIngredients = 0;
+            for (int i = 0; i < maxNumberOfIngredients; i++)
+            {
+                if (!String.IsNullOrEmpty(ingredients[i]))
+                    currNumIngredients += 1;
+            }
+
+            return currNumIngredients;
         }
 
         /// <summary>
@@ -154,9 +166,13 @@ namespace Assignment4
         /// 
         /// </summary>
         /// <param name="indwx"></param>
-        public void DeleteIngedientAt(int indwx)
+        public void DeleteIngedientAt(int index)
         {
-
+            if (index < ingredients.Length)
+            {
+                ingredients[index] = string.Empty;
+                MoveElementsOneStepToLeft(index);
+            }
         }
 
         /// <summary>
@@ -165,7 +181,13 @@ namespace Assignment4
         /// <returns></returns>
         public int FindVacantPosition()
         {
-            return 0;
+            for (int i = 0; i < maxNumberOfIngredients; i++)
+            {
+                if (String.IsNullOrEmpty(ingredients[i]))
+                    return i;
+            }
+
+            return -1;
         }
 
         /// <summary>
@@ -174,7 +196,18 @@ namespace Assignment4
         /// <returns></returns>
         public string GetIngredientsString()
         {
-            return "";
+            string combinedIngredients = string.Empty;
+
+            for (int i = 0; i < maxNumberOfIngredients; i++)
+            {
+                if (!String.IsNullOrEmpty(ingredients[i]))
+                    if (String.IsNullOrEmpty(combinedIngredients))
+                        combinedIngredients += ingredients[i];
+                    else
+                        combinedIngredients += ", " + ingredients[i];
+            }
+
+            return combinedIngredients;
         }
 
         /// <summary>
@@ -183,7 +216,16 @@ namespace Assignment4
         /// <returns></returns>
         public string ToString()
         {
-            return "";
+            return ingredients[0];
+        }
+
+        private void MoveElementsOneStepToLeft(int index)
+        {
+            for (int i = index + 1; i < ingredients.Length; i++)
+            {
+                ingredients[i - 1] = ingredients[i];
+                ingredients[i] = String.Empty;
+            }
         }
     }
 }

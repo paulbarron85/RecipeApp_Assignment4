@@ -12,15 +12,16 @@ namespace Assignment4
 {
     public partial class FormIngedients : Form
     {
-        private Recipe _recipe;
+        private Recipe recipe;
         public Recipe Recipe
         {
-            get { return _recipe; }
-            set { _recipe = value; }
+            get { return recipe; }
+            set { recipe = value; }
         }
 
         public FormIngedients(Recipe recipe)
         {
+            this.recipe = recipe;
             InitializeComponent();
         }
 
@@ -30,12 +31,22 @@ namespace Assignment4
         }
         public void UpdateGUI()
         {
-
+            lblCurrNum.Text = Recipe.CurrentNumberOfIngredients().ToString();
+            lstIngedients.Items.Clear();
+            for (int i = 0; i < Recipe.CurrentNumberOfIngredients(); i++)
+            {
+                lstIngedients.Items.Add(recipe.Ingedients[i]);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            bool success = Recipe.AddIngredient(txtNameIngedient.Text);
             
+            if (!success)
+                MessageBox.Show("Add ingredient failed", "Error");
+            else
+                UpdateGUI();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -45,7 +56,17 @@ namespace Assignment4
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            int index = lstIngedients.SelectedIndex;
 
+            if (index >= 0)
+            {
+                Recipe.DeleteIngedientAt(index);
+                UpdateGUI();
+            }
+            else
+            {
+                MessageBox.Show("No ingredient selected", "Error");
+            }
         }
     }
 }

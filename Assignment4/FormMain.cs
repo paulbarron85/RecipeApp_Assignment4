@@ -13,6 +13,7 @@ namespace Assignment4
 
         private void btnAddIngredients_Click(object sender, EventArgs e)
         {
+            currRecipe = new Recipe(maxNumOfIngredients);
             // Creates new ingredients form and opens as a dialog box
             FormIngedients dlg = new FormIngedients(currRecipe);
             DialogResult dlgResult = dlg.ShowDialog();
