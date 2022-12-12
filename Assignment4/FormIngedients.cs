@@ -51,7 +51,23 @@ namespace Assignment4
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            int index = lstIngedients.SelectedIndex;
 
+            if (index >= 0)
+            {
+                bool exits = Recipe.CheckIngredientAt(index);
+                if (exits) 
+                {
+                    Recipe.Ingedients[index] = txtNameIngedient.Text;
+                    UpdateGUI();
+                }
+                else
+                    MessageBox.Show("Index doesn't exist: " + index, "Error");
+            }
+            else
+            {
+                MessageBox.Show("No ingredient selected", "Error");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

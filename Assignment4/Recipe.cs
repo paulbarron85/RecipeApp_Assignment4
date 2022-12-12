@@ -125,7 +125,7 @@ namespace Assignment4
         /// <returns></returns>
         public bool CheckIngredientAt(int index)
         {
-            return ingredients[index] == null;
+            return ingredients[index] != null;
         }
 
         /// <summary>
