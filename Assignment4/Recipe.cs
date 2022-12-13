@@ -216,7 +216,9 @@ namespace Assignment4
         /// <returns></returns>
         public string ToString()
         {
-            return ingredients[0];
+            string returnString = string.Empty;
+
+            return returnString;
         }
 
         private void MoveElementsOneStepToLeft(int index)

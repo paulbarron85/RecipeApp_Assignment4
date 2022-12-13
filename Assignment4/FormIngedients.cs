@@ -19,16 +19,27 @@ namespace Assignment4
             set { recipe = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="recipe"></param>
         public FormIngedients(Recipe recipe)
         {
             this.recipe = recipe;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void InitializeGUI()
         {
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void UpdateGUI()
         {
             lblCurrNum.Text = Recipe.CurrentNumberOfIngredients().ToString();
@@ -39,6 +50,11 @@ namespace Assignment4
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             bool success = Recipe.AddIngredient(txtNameIngedient.Text);
@@ -49,6 +65,11 @@ namespace Assignment4
                 UpdateGUI();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             int index = lstIngedients.SelectedIndex;
@@ -70,6 +91,11 @@ namespace Assignment4
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int index = lstIngedients.SelectedIndex;
@@ -83,6 +109,27 @@ namespace Assignment4
             {
                 MessageBox.Show("No ingredient selected", "Error");
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            recipe.DefaultValues();
+            this.Close();
         }
     }
 }

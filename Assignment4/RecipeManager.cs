@@ -8,71 +8,105 @@ namespace Assignment4
 {
     public class RecipeManager
     {
-        private Recipe[] RecipeList;
+        private Recipe[] recipeList;
 
         public RecipeManager(int maxNumberOfElements)
         {
-            RecipeList = new Recipe[maxNumberOfElements];  // Declares an array for storing recipes
+            recipeList = new Recipe[maxNumberOfElements];  // Declares an array for storing recipes
         }
         public bool Add(Recipe recipe)
         {
-            //check so recipe is not null before adding to the//recipList.
-            return false;
+            bool success = false;
+            
+            //check so recipe is not null before adding to the recipList.
+            if (recipe != null)
+            {
+                int vacantPos = FindVacantPosition();
+                if (vacantPos < recipeList.Length)
+                {
+                    recipeList[vacantPos] = recipe;
+                    success = true;
+                }
+            }
+
+            return success;
         }
-        private bool Add(string name, FoodCategory category, string[] ingedients)
+        public bool Add(string name, FoodCategory category, string[] ingedients)
         {
+            //recipeList[0].Name = name;
+            //recipeList[0].Category = category;
+            //recipeList[0].Ingedients = ingedients;
+
             return false;
         }
 
-        private void ChangeElement(int index, Recipe recipe)
+        public void ChangeElement(int index, Recipe recipe)
         {
 
         }
 
         private bool CheckIndex(int index)
         {
-            return false;
+            return (recipeList[index] != null);
         }
 
-        private void DeleteElement(int index)
+        public void DeleteElement(int index)
         {
 
         }
 
         private int FindVacantPosition()
         {
-            return 0;
+            int vacantPos;
+            for (vacantPos = 0; vacantPos < recipeList.Length; vacantPos++)
+            {
+                if (recipeList[vacantPos] == null)
+                    break;
+            }
+            return vacantPos;
         }
         
-        private int GetCurrentNumberOfRecipes()
+        public int GetCurrentNumberOfRecipes()
         {
-            return 0;
+            int numOfRecipes;
+            for (numOfRecipes = 0; numOfRecipes < recipeList.Length; numOfRecipes++)
+            {
+                if (recipeList[numOfRecipes] == null)
+                    break;
+            }
+
+            return numOfRecipes;
         }
         
-        private Recipe GetRecipeAt(int index)
+        public Recipe GetRecipeAt(int index)
         {
-            Recipe recipe = null;
+            Recipe recipe;
+
+            recipe = recipeList[index];
 
             return recipe;
         }
-        
-        private string[] RecipeListToString()
+
+        public string[] RecipeListToString()
         {
-            string[] recipeList_string = null;
+            string[] rtnStringArray = new string[recipeList.Length];
 
-            return recipeList_string;
+            for (int i = 0; i < recipeList.Length; i++)
+            {
+                if (recipeList[i] != null)
+                    rtnStringArray[i] = string.Format("{0, -40} {1, -40} {2, -2}", recipeList[0].Name, recipeList[0].Category.ToString(), recipeList[0].CurrentNumberOfIngredients().ToString());
+            }
+
+            return rtnStringArray;
         }
-        
-
-
 
 
         private void MoveElementsOneStepToLeft(int index)
         {
-            for (int i = index + 1; i < RecipeList.Length; i++)
+            for (int i = index + 1; i < recipeList.Length; i++)
             {
-                RecipeList[i - 1] = RecipeList[i];
-                RecipeList[i] = null;
+                recipeList[i - 1] = recipeList[i];
+                recipeList[i] = null;
             }
         }
     }
