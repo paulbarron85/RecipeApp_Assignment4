@@ -44,13 +44,17 @@ namespace Assignment4
             currRecipe.Category = (FoodCategory) cmbCategory.SelectedIndex;
             currRecipe.Instructions = txtInstructions.Text;
 
-            recipeManager.Add(currRecipe);
-            //recipeManager.Add(txtNameOfRecipe.Text, cmbCategory.Text, lblInstructions.Text);
+            // TO DO: Add checks here for name, category and instructions are not null
+            if (currRecipe.CurrentNumberOfIngredients() > 0) 
+            {
+                recipeManager.Add(currRecipe);
+                //recipeManager.Add(txtNameOfRecipe.Text, cmbCategory.Text, lblInstructions.Text);
 
-            UpdateGUI();
-            ClearSelection();
+                UpdateGUI();
+                ClearSelection();
 
-            currRecipe = new Recipe(maxNumOfIngredients);
+                currRecipe = new Recipe(maxNumOfIngredients);
+            }
         }
 
         private void btnEditStart_Click(object sender, EventArgs e)
