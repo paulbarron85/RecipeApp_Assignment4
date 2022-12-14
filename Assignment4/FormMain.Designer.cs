@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.grpAddRecipe = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtInstructions = new System.Windows.Forms.TextBox();
             this.btnAddRecipe = new System.Windows.Forms.Button();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.btnAddIngredients = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             // 
             // grpAddRecipe
             // 
-            this.grpAddRecipe.Controls.Add(this.textBox1);
+            this.grpAddRecipe.Controls.Add(this.txtInstructions);
             this.grpAddRecipe.Controls.Add(this.btnAddRecipe);
             this.grpAddRecipe.Controls.Add(this.cmbCategory);
             this.grpAddRecipe.Controls.Add(this.btnAddIngredients);
@@ -64,13 +64,13 @@
             this.grpAddRecipe.TabStop = false;
             this.grpAddRecipe.Text = "Add New Recipe";
             // 
-            // textBox1
+            // txtInstructions
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 196);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(513, 362);
-            this.textBox1.TabIndex = 7;
+            this.txtInstructions.Location = new System.Drawing.Point(28, 196);
+            this.txtInstructions.Multiline = true;
+            this.txtInstructions.Name = "txtInstructions";
+            this.txtInstructions.Size = new System.Drawing.Size(513, 362);
+            this.txtInstructions.TabIndex = 7;
             // 
             // btnAddRecipe
             // 
@@ -255,6 +255,6 @@
         private TextBox txtNameOfRecipe;
 
         private Label lblInstructions;
-        private TextBox textBox1;
+        private TextBox txtInstructions;
     }
 }

@@ -34,7 +34,7 @@ namespace Assignment4
         /// </summary>
         public void InitializeGUI()
         {
-
+            txtNameIngedient.Text = string.Empty;
         }
 
         /// <summary>
@@ -58,11 +58,14 @@ namespace Assignment4
         private void btnAdd_Click(object sender, EventArgs e)
         {
             bool success = Recipe.AddIngredient(txtNameIngedient.Text);
-            
+
             if (!success)
                 MessageBox.Show("Add ingredient failed", "Error");
             else
+            {
                 UpdateGUI();
+                InitializeGUI();
+            }
         }
 
         /// <summary>

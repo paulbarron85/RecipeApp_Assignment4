@@ -42,10 +42,11 @@ namespace Assignment4
         {
             currRecipe.Name = txtNameOfRecipe.Text;
             currRecipe.Category = (FoodCategory) cmbCategory.SelectedIndex;
-            currRecipe.Instructions = lblInstructions.Text;
+            currRecipe.Instructions = txtInstructions.Text;
 
             recipeManager.Add(currRecipe);
             //recipeManager.Add(txtNameOfRecipe.Text, cmbCategory.Text, lblInstructions.Text);
+
 
             UpdateGUI();
         }
@@ -62,6 +63,7 @@ namespace Assignment4
             btnAddRecipe.Enabled = true;
 
             UpdateGUI();
+            ClearSelection();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -76,6 +78,9 @@ namespace Assignment4
 
         private void ClearSelection()
         {
+            txtNameOfRecipe.Clear();
+            txtInstructions.Clear();
+            cmbCategory.SelectedIndex = -1;
             lstRecipe.SelectedIndex = -1;
         }
 
@@ -100,7 +105,12 @@ namespace Assignment4
 
         private void lstRecipe_MouseDoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Instructions.....", "Recipe Name");
+            int selectedRecipeIndex = lstRecipe.SelectedIndex;
+            if (selectedRecipeIndex >= 0)
+            {
+                Recipe selectedRecipe = recipeManager.GetRecipeAt(selectedRecipeIndex);
+                MessageBox.Show(String.Format("{0}\n{1}", selectedRecipe.GetIngredientsString(), selectedRecipe.Instructions, selectedRecipe.Category.ToString()));
+            }
         }
     }
 }
