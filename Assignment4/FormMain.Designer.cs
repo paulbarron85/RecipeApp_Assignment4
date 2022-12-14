@@ -84,6 +84,7 @@
             // 
             // cmbCategory
             // 
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(122, 112);
             this.cmbCategory.Name = "cmbCategory";
@@ -161,6 +162,7 @@
             this.lstRecipe.Size = new System.Drawing.Size(631, 479);
             this.lstRecipe.TabIndex = 4;
             this.lstRecipe.SelectedIndexChanged += new System.EventHandler(this.lstRecipe_SelectedIndexChanged);
+            this.lstRecipe.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstRecipe_MouseDoubleClick);
             // 
             // btnEditStart
             // 

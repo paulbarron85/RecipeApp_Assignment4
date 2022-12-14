@@ -52,12 +52,16 @@ namespace Assignment4
 
         private void btnEditStart_Click(object sender, EventArgs e)
         {
-
+            btnAddIngredients.Enabled = false;
+            btnAddRecipe.Enabled = false;
         }
 
         private void btnEditFinish_Click(object sender, EventArgs e)
         {
+            btnAddIngredients.Enabled = true;
+            btnAddRecipe.Enabled = true;
 
+            UpdateGUI();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -72,7 +76,7 @@ namespace Assignment4
 
         private void ClearSelection()
         {
-
+            lstRecipe.SelectedIndex = -1;
         }
 
         public void InitializeGUI()
@@ -98,6 +102,5 @@ namespace Assignment4
         {
             MessageBox.Show("Instructions.....", "Recipe Name");
         }
-
     }
 }
