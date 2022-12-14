@@ -47,8 +47,10 @@ namespace Assignment4
             recipeManager.Add(currRecipe);
             //recipeManager.Add(txtNameOfRecipe.Text, cmbCategory.Text, lblInstructions.Text);
 
-
             UpdateGUI();
+            ClearSelection();
+
+            currRecipe = new Recipe(maxNumOfIngredients);
         }
 
         private void btnEditStart_Click(object sender, EventArgs e)
@@ -68,12 +70,12 @@ namespace Assignment4
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            recipeManager.DeleteElement(lstRecipe.SelectedIndex);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-
+            ClearSelection();
         }
 
         private void ClearSelection()
@@ -90,6 +92,8 @@ namespace Assignment4
         }
         public void UpdateGUI()
         {
+            lstRecipe.Items.Clear();
+
             string[] recipeStringArray = recipeManager.RecipeListToString();
             for (int i = 0; i < recipeStringArray.Length; i++) 
             {

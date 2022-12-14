@@ -209,9 +209,9 @@
             this.lblInstructions.AutoSize = true;
             this.lblInstructions.Location = new System.Drawing.Point(847, 680);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Size = new System.Drawing.Size(466, 25);
+            this.lblInstructions.Size = new System.Drawing.Size(494, 25);
             this.lblInstructions.TabIndex = 9;
-            this.lblInstructions.Text = "Double click on item for ingediants _cooking instructions!";
+            this.lblInstructions.Text = "Double click on item for ingediants and cooking instructions!";
             // 
             // FormMain
             // 

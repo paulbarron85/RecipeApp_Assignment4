@@ -52,7 +52,8 @@ namespace Assignment4
 
         public void DeleteElement(int index)
         {
-
+            recipeList[index] = null;
+            MoveElementsOneStepToLeft(index);
         }
 
         private int FindVacantPosition()
@@ -94,7 +95,7 @@ namespace Assignment4
             for (int i = 0; i < recipeList.Length; i++)
             {
                 if (recipeList[i] != null)
-                    rtnStringArray[i] = string.Format("{0, -40} {1, -40} {2, -2}", recipeList[0].Name, recipeList[0].Category.ToString(), recipeList[0].CurrentNumberOfIngredients().ToString());
+                    rtnStringArray[i] = string.Format("{0, -40} {1, -40} {2, -2}", recipeList[i].Name, recipeList[i].Category.ToString(), recipeList[i].CurrentNumberOfIngredients().ToString());
             }
 
             return rtnStringArray;
