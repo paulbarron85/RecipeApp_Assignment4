@@ -80,7 +80,7 @@
             this.btnAddRecipe.TabIndex = 6;
             this.btnAddRecipe.Text = "Add recipe";
             this.btnAddRecipe.UseVisualStyleBackColor = true;
-            this.btnAddRecipe.Click += new System.EventHandler(this.btnAddRecipe_Click);
+            this.btnAddRecipe.Click += new System.EventHandler(this.BtnAddRecipe_Click);
             // 
             // cmbCategory
             // 
@@ -99,7 +99,7 @@
             this.btnAddIngredients.TabIndex = 3;
             this.btnAddIngredients.Text = "Add Ingredients";
             this.btnAddIngredients.UseVisualStyleBackColor = true;
-            this.btnAddIngredients.Click += new System.EventHandler(this.btnAddIngredients_Click);
+            this.btnAddIngredients.Click += new System.EventHandler(this.BtnAddIngredients_Click);
             // 
             // lblCategory
             // 
@@ -172,7 +172,7 @@
             this.btnEditStart.TabIndex = 5;
             this.btnEditStart.Text = "Edit-Begin";
             this.btnEditStart.UseVisualStyleBackColor = true;
-            this.btnEditStart.Click += new System.EventHandler(this.btnEditStart_Click);
+            this.btnEditStart.Click += new System.EventHandler(this.BtnEditStart_Click);
             // 
             // btnEditFinish
             // 
@@ -182,7 +182,7 @@
             this.btnEditFinish.TabIndex = 6;
             this.btnEditFinish.Text = "Edit-Finish";
             this.btnEditFinish.UseVisualStyleBackColor = true;
-            this.btnEditFinish.Click += new System.EventHandler(this.btnEditFinish_Click);
+            this.btnEditFinish.Click += new System.EventHandler(this.BtnEditFinish_Click);
             // 
             // btnDelete
             // 
@@ -192,7 +192,7 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // btnClear
             // 
@@ -202,7 +202,7 @@
             this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Clear Selection";
             this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // lblInstructions
             // 

@@ -23,7 +23,7 @@ namespace Assignment4
             }
         }
 
-        private void btnAddIngredients_Click(object sender, EventArgs e)
+        private void BtnAddIngredients_Click(object sender, EventArgs e)
         {
             // Creates new ingredients form and opens as a dialog box
             FormIngedients dlg = new(currRecipe);
@@ -38,7 +38,7 @@ namespace Assignment4
             }
         }
 
-        private void btnAddRecipe_Click(object sender, EventArgs e)
+        private void BtnAddRecipe_Click(object sender, EventArgs e)
         {
             currRecipe.Name = txtNameOfRecipe.Text;
             currRecipe.Category = (FoodCategory) cmbCategory.SelectedIndex;
@@ -55,29 +55,46 @@ namespace Assignment4
 
                 currRecipe = new Recipe(maxNumOfIngredients);
             }
+            else
+            {
+                MessageBox.Show("No ingredients specififed", "Error");
+            }
         }
 
-        private void btnEditStart_Click(object sender, EventArgs e)
+        private void BtnEditStart_Click(object sender, EventArgs e)
         {
-            btnAddIngredients.Enabled = false;
-            btnAddRecipe.Enabled = false;
+            if (lstRecipe.SelectedIndex >= 0 && lstRecipe.SelectedIndex < recipeManager.GetCurrentNumberOfRecipes())
+            {
+                btnAddIngredients.Enabled = false;
+                btnAddRecipe.Enabled = false;
+
+                currRecipe = recipeManager.GetRecipeAt(lstRecipe.SelectedIndex);
+
+                txtNameOfRecipe.Text = currRecipe.Name;
+                txtInstructions.Text = currRecipe.Instructions;
+                cmbCategory.SelectedIndex = (int) currRecipe.Category;
+                //??? = currRecipe.Ingedients;
+            }
         }
 
-        private void btnEditFinish_Click(object sender, EventArgs e)
+        private void BtnEditFinish_Click(object sender, EventArgs e)
         {
             btnAddIngredients.Enabled = true;
             btnAddRecipe.Enabled = true;
+
+            // CHECK THIS PART HERE
+            recipeManager.ChangeElement(lstRecipe.SelectedIndex, currRecipe);
 
             UpdateGUI();
             ClearSelection();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             recipeManager.DeleteElement(lstRecipe.SelectedIndex);
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void BtnClear_Click(object sender, EventArgs e)
         {
             ClearSelection();
         }
@@ -117,7 +134,7 @@ namespace Assignment4
             if (selectedRecipeIndex >= 0)
             {
                 Recipe selectedRecipe = recipeManager.GetRecipeAt(selectedRecipeIndex);
-                MessageBox.Show(String.Format("{0}\n{1}", selectedRecipe.GetIngredientsString(), selectedRecipe.Instructions, selectedRecipe.Category.ToString()));
+                MessageBox.Show(String.Format("{0}\n{1}", selectedRecipe.GetIngredientsString(), selectedRecipe.Instructions, selectedRecipe.Name));
             }
         }
     }

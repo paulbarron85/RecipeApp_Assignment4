@@ -55,7 +55,7 @@ namespace Assignment4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             bool success = Recipe.AddIngredient(txtNameIngedient.Text);
 
@@ -73,7 +73,7 @@ namespace Assignment4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void BtnEdit_Click_Click(object sender, EventArgs e)
         {
             int index = lstIngedients.SelectedIndex;
 
@@ -99,7 +99,7 @@ namespace Assignment4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             int index = lstIngedients.SelectedIndex;
 
@@ -119,7 +119,7 @@ namespace Assignment4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
 
             this.Close();
@@ -130,7 +130,7 @@ namespace Assignment4
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             recipe.DefaultValues();
             this.Close();
