@@ -161,8 +161,8 @@
             this.lstRecipe.Name = "lstRecipe";
             this.lstRecipe.Size = new System.Drawing.Size(631, 479);
             this.lstRecipe.TabIndex = 4;
-            this.lstRecipe.SelectedIndexChanged += new System.EventHandler(this.lstRecipe_SelectedIndexChanged);
-            this.lstRecipe.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstRecipe_MouseDoubleClick);
+            this.lstRecipe.SelectedIndexChanged += new System.EventHandler(this.LstRecipe_SelectedIndexChanged);
+            this.lstRecipe.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LstRecipe_MouseDoubleClick);
             // 
             // btnEditStart
             // 
@@ -176,6 +176,7 @@
             // 
             // btnEditFinish
             // 
+            this.btnEditFinish.Enabled = false;
             this.btnEditFinish.Location = new System.Drawing.Point(930, 620);
             this.btnEditFinish.Name = "btnEditFinish";
             this.btnEditFinish.Size = new System.Drawing.Size(112, 34);

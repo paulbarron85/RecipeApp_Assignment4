@@ -20,13 +20,15 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Constructor for the FormIngredients
+        /// Send reference for 
         /// </summary>
         /// <param name="recipe"></param>
         public FormIngedients(Recipe recipe)
         {
             this.recipe = recipe;
             InitializeComponent();
+            InitializeGUI();
         }
 
         /// <summary>
@@ -35,6 +37,7 @@ namespace Assignment4
         public void InitializeGUI()
         {
             txtNameIngedient.Text = string.Empty;
+            UpdateGUI();
         }
 
         /// <summary>

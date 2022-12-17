@@ -8,18 +8,24 @@ namespace Assignment4
 {
     public class RecipeManager
     {
-        private Recipe[] recipeList;
+        private readonly Recipe[] recipeList;
 
         public RecipeManager(int maxNumberOfElements)
         {
             recipeList = new Recipe[maxNumberOfElements];  // Declares an array for storing recipes
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="recipe"></param>
+        /// <returns></returns>
         public bool Add(Recipe recipe)
         {
             bool success = false;
             
             //check so recipe is not null before adding to the recipList.
-            if (recipe != null)
+            if (recipe is not null)
             {
                 int vacantPos = FindVacantPosition();
                 if (vacantPos < recipeList.Length)
@@ -31,6 +37,14 @@ namespace Assignment4
 
             return success;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="category"></param>
+        /// <param name="ingedients"></param>
+        /// <returns></returns>
         public bool Add(string name, FoodCategory category, string[] ingedients)
         {
             //recipeList[0].Name = name;
@@ -40,22 +54,43 @@ namespace Assignment4
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="recipe"></param>
         public void ChangeElement(int index, Recipe recipe)
         {
-
+            if (index >= 0 && index < recipeList.Length && recipe != null)
+            {
+                recipeList[index] = recipe;
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private bool CheckIndex(int index)
         {
             return (recipeList[index] != null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
         public void DeleteElement(int index)
         {
             recipeList[index] = null;
             MoveElementsOneStepToLeft(index);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private int FindVacantPosition()
         {
             int vacantPos;
@@ -67,6 +102,10 @@ namespace Assignment4
             return vacantPos;
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public int GetCurrentNumberOfRecipes()
         {
             int numOfRecipes;
@@ -79,6 +118,11 @@ namespace Assignment4
             return numOfRecipes;
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public Recipe GetRecipeAt(int index)
         {
             Recipe recipe;
@@ -88,6 +132,10 @@ namespace Assignment4
             return recipe;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string[] RecipeListToString()
         {
             string[] rtnStringArray = new string[recipeList.Length];
@@ -101,7 +149,10 @@ namespace Assignment4
             return rtnStringArray;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
         private void MoveElementsOneStepToLeft(int index)
         {
             for (int i = index + 1; i < recipeList.Length; i++)

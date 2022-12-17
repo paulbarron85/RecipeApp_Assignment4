@@ -8,9 +8,10 @@ namespace Assignment4
 {
     /// <summary>
     /// Every recipe has:
-    /// • a list of ingredients (strings)
-    /// • a description (instructions)
-    /// • a category as listed in the enum FoodCategory.
+    /// - a name
+    /// - a category as listed in the enum FoodCategory
+    /// - a list of ingredients (strings)
+    /// - a description (instructions)
     /// </summary>
     public class Recipe
     {
@@ -21,7 +22,7 @@ namespace Assignment4
         private FoodCategory category;
 
         /// <summary>
-        /// 
+        /// Constuctor that accepts the max number of ingredients per recipe
         /// </summary>
         public uint MaxNumberOfIngedients
         {
@@ -29,30 +30,24 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Property: List of Ingredients
         /// </summary>
         public string[] Ingedients
         {
-            get
-            {
-                return ingredients;
-            }
+            get { return ingredients; }
             set
             {
-                //if (!String.IsNullOrEmpty(value))
-                ingredients = value;
+                if (value is not null)
+                    ingredients = value;
             }
         }
 
         /// <summary>
-        /// 
+        /// Property: Instructions for the recipe
         /// </summary>
-        public string? Instructions
+        public string Instructions
         {
-            get
-            {
-                return instructions;
-            }
+            get { return instructions; }
             set
             {
                 if (!String.IsNullOrEmpty(value))
@@ -61,7 +56,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Property: Category of the dish
         /// </summary>
         public FoodCategory Category
         {
@@ -70,14 +65,11 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Property: Name of the recipe
         /// </summary>
         public string Name 
         { 
-            get 
-            { 
-                return name; 
-            } 
+            get { return name; } 
             set 
             {
                 if (!String.IsNullOrEmpty(value))
@@ -86,19 +78,23 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// Constructor
+        /// Constructor: if max Number of ingredients is less than 1 we just use 10
+        /// Can't have a negative number of max ingredients
         /// </summary>
         /// <param name="maxNumberOfIngredients"></param>
         public Recipe(uint maxNumberOfIngredients)
         {
             if (maxNumberOfIngredients > 0)
                 this.maxNumberOfIngredients = maxNumberOfIngredients;
-                ingredients = new string[maxNumberOfIngredients];
+            else
+                this.maxNumberOfIngredients = 10;
+
+            ingredients = new string[maxNumberOfIngredients];
         }
 
 
         /// <summary>
-        /// 
+        /// Takes a string and adds to an array of string ingredients
         /// </summary>
         /// <param name="index"></param>
         /// <param name="value"></param>
@@ -119,7 +115,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Check if ingredient array position is filled and return true if has a value
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
@@ -135,7 +131,7 @@ namespace Assignment4
         /// <returns></returns>
         private bool CheckIndex(int index)
         {
-            return false;
+            return ingredients[index] != null;
         }
 
         /// <summary>
@@ -147,7 +143,7 @@ namespace Assignment4
             uint currNumIngredients = 0;
             for (int i = 0; i < maxNumberOfIngredients; i++)
             {
-                if (!String.IsNullOrEmpty(ingredients[i]))
+                if (CheckIndex(i))
                     currNumIngredients += 1;
             }
 
@@ -198,13 +194,13 @@ namespace Assignment4
         {
             string combinedIngredients = string.Empty;
 
-            for (int i = 0; i < maxNumberOfIngredients; i++)
+            if (ingredients[0] is not null)
+                combinedIngredients += ingredients[0];
+
+            for (int i = 1; i < maxNumberOfIngredients; i++)
             {
-                if (!String.IsNullOrEmpty(ingredients[i]))
-                    if (String.IsNullOrEmpty(combinedIngredients))
-                        combinedIngredients += ingredients[i];
-                    else
-                        combinedIngredients += ", " + ingredients[i];
+                if (ingredients[i] is not null)
+                    combinedIngredients += ", " + ingredients[i];
             }
 
             return combinedIngredients;
