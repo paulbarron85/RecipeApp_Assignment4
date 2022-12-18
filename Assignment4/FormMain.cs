@@ -4,7 +4,7 @@ namespace Assignment4
     {
         const int maxNumOfElements = 10;
         const int maxNumOfIngredients = 10;
-        private RecipeManager recipeManager;
+        private readonly RecipeManager recipeManager;
         private Recipe currRecipe;
         public FormMain()
         {
@@ -57,8 +57,32 @@ namespace Assignment4
             currRecipe.Name = txtNameOfRecipe.Text;
             currRecipe.Category = (FoodCategory) cmbCategory.SelectedIndex;
             currRecipe.Instructions = txtInstructions.Text;
+            
+            if (string.IsNullOrEmpty(currRecipe.Name))
+            {
+                MessageBox.Show("No Recipe name specified", "Error");
+                return;
+            }
 
-            if (currRecipe.CurrentNumberOfIngredients() > 0) 
+            if (string.IsNullOrEmpty(currRecipe.Instructions))
+            {
+                MessageBox.Show("No instructions specififed", "Error");
+                return;
+            }
+
+            if (cmbCategory.SelectedIndex < 0)
+            {
+                MessageBox.Show("Food Category not specified", "Error");
+                return;
+            }
+
+            if (currRecipe.CurrentNumberOfIngredients() <= 0) 
+            {
+                MessageBox.Show("No ingredients specififed", "Error");
+                return;
+            }
+
+            if (recipeManager.GetCurrentNumberOfRecipes() < maxNumOfElements)
             {
                 recipeManager.Add(currRecipe);
                 //recipeManager.Add(txtNameOfRecipe.Text, cmbCategory.Text, lblInstructions.Text);
@@ -70,7 +94,8 @@ namespace Assignment4
             }
             else
             {
-                MessageBox.Show("No ingredients specififed", "Error");
+                MessageBox.Show("Maximum number of recipes reached", "Error");
+                return;
             }
         }
 
@@ -81,8 +106,17 @@ namespace Assignment4
         /// <param name="e"></param>
         private void BtnEditStart_Click(object sender, EventArgs e)
         {
-            if (lstRecipe.SelectedIndex >= 0 && lstRecipe.SelectedIndex < recipeManager.GetCurrentNumberOfRecipes())
+            int selectedRecipeIndex = lstRecipe.SelectedIndex;
+            int numOfRecipes = recipeManager.GetCurrentNumberOfRecipes();
+
+            if (numOfRecipes > 0 && selectedRecipeIndex >= 0 && selectedRecipeIndex <= numOfRecipes)
             {
+                currRecipe = recipeManager.GetRecipeAt(selectedRecipeIndex);
+
+                txtNameOfRecipe.Text = currRecipe.Name;
+                txtInstructions.Text = currRecipe.Instructions;
+                cmbCategory.SelectedIndex = (int)currRecipe.Category;
+
                 btnAddRecipe.Enabled = false;
                 lstRecipe.Enabled = false;
                 btnDelete.Enabled = false;
@@ -118,6 +152,7 @@ namespace Assignment4
 
             UpdateGUI();
             ClearSelection();
+            currRecipe = new Recipe(maxNumOfIngredients);
         }
 
         /// <summary>
@@ -128,9 +163,13 @@ namespace Assignment4
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             int recipeIndexToDelete = lstRecipe.SelectedIndex;
-            recipeManager.DeleteElement(recipeIndexToDelete);
-            lstRecipe.Items.RemoveAt(recipeIndexToDelete);
-            ClearSelection();
+
+            if (recipeIndexToDelete >= 0)
+            {
+                recipeManager.DeleteElement(recipeIndexToDelete);
+                lstRecipe.Items.RemoveAt(recipeIndexToDelete);
+                ClearSelection();
+            }
         }
 
         /// <summary>
@@ -189,19 +228,22 @@ namespace Assignment4
         private void LstRecipe_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedRecipeIndex = lstRecipe.SelectedIndex;
+            int numOfRecipes = recipeManager.GetCurrentNumberOfRecipes();
 
-            if (selectedRecipeIndex >= 0 && selectedRecipeIndex < lstRecipe.Items.Count)
+            if (numOfRecipes > 0 && selectedRecipeIndex >= 0 && selectedRecipeIndex <= numOfRecipes)
             {
-                currRecipe = recipeManager.GetRecipeAt(selectedRecipeIndex);
-
-                txtNameOfRecipe.Text = currRecipe.Name;
-                txtInstructions.Text = currRecipe.Instructions;
-                cmbCategory.SelectedIndex = (int)currRecipe.Category;
+                btnEditStart.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            else
+            {
+                btnEditStart.Enabled = false;
+                btnDelete.Enabled = false;
             }
         }
 
         /// <summary>
-        /// 
+        /// Open a selected recipe in a message box when the user double clicks on a recipe
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -210,8 +252,8 @@ namespace Assignment4
             int selectedRecipeIndex = lstRecipe.SelectedIndex;
             if (selectedRecipeIndex >= 0)
             {
-                Recipe selectedRecipe = recipeManager.GetRecipeAt(selectedRecipeIndex);
-                String strOut = $"{selectedRecipe.Name}\n\n" +
+                Recipe? selectedRecipe = recipeManager.GetRecipeAt(selectedRecipeIndex);
+                String strOut = $"{selectedRecipe.Name ?? ""}\n\n" +
                                 $"Ingredients: {selectedRecipe.GetIngredientsString()}\n" +
                                 $"--------------------\n\n" +
                                 $"{selectedRecipe.Instructions}";

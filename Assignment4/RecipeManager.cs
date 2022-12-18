@@ -8,15 +8,20 @@ namespace Assignment4
 {
     public class RecipeManager
     {
-        private readonly Recipe[] recipeList;
+        private readonly Recipe?[] recipeList; // Array for storing recipes, if null then that index position is empty
 
+        /// <summary>
+        /// Constructor for the Recipe Manager
+        /// </summary>
+        /// <param name="maxNumberOfElements"></param>
         public RecipeManager(int maxNumberOfElements)
         {
             recipeList = new Recipe[maxNumberOfElements];  // Declares an array for storing recipes
         }
 
         /// <summary>
-        /// 
+        /// Add a recipe to the Recipe Manager
+        /// Check the recipe is non-null and then find a free position
         /// </summary>
         /// <param name="recipe"></param>
         /// <returns></returns>
@@ -28,7 +33,7 @@ namespace Assignment4
             if (recipe is not null)
             {
                 int vacantPos = FindVacantPosition();
-                if (vacantPos < recipeList.Length)
+                if (vacantPos >= 0 && vacantPos < recipeList.Length)
                 {
                     recipeList[vacantPos] = recipe;
                     success = true;
@@ -45,6 +50,7 @@ namespace Assignment4
         /// <param name="category"></param>
         /// <param name="ingedients"></param>
         /// <returns></returns>
+        /* Given as part of the assignment but not used
         public bool Add(string name, FoodCategory category, string[] ingedients)
         {
             //recipeList[0].Name = name;
@@ -52,7 +58,7 @@ namespace Assignment4
             //recipeList[0].Ingedients = ingedients;
 
             return false;
-        }
+        } */
 
         /// <summary>
         /// 
@@ -72,10 +78,12 @@ namespace Assignment4
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
+        /* Comes from assignment but unused
         private bool CheckIndex(int index)
         {
             return (recipeList[index] != null);
         }
+        */
 
         /// <summary>
         /// 
@@ -83,8 +91,11 @@ namespace Assignment4
         /// <param name="index"></param>
         public void DeleteElement(int index)
         {
-            recipeList[index] = null;
-            MoveElementsOneStepToLeft(index);
+            if (recipeList.Length > 0)
+            {
+                recipeList[index] = null;
+                MoveElementsOneStepToLeft(index);
+            }
         }
 
         /// <summary>
@@ -109,7 +120,8 @@ namespace Assignment4
         public int GetCurrentNumberOfRecipes()
         {
             int numOfRecipes;
-            for (numOfRecipes = 0; numOfRecipes < recipeList.Length; numOfRecipes++)
+
+            for (numOfRecipes = 0; numOfRecipes <= recipeList.Length; numOfRecipes++)
             {
                 if (recipeList[numOfRecipes] == null)
                     break;
@@ -123,9 +135,9 @@ namespace Assignment4
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public Recipe GetRecipeAt(int index)
+        public Recipe? GetRecipeAt(int index)
         {
-            Recipe recipe;
+            Recipe? recipe;
 
             recipe = recipeList[index];
 
@@ -142,15 +154,16 @@ namespace Assignment4
 
             for (int i = 0; i < recipeList.Length; i++)
             {
-                if (recipeList[i] != null)
-                    rtnStringArray[i] = string.Format("{0, -40} {1, -40} {2, -2}", recipeList[i].Name, recipeList[i].Category.ToString(), recipeList[i].CurrentNumberOfIngredients().ToString());
+                if (recipeList[i] is not null)
+                    rtnStringArray[i] = string.Format("{0, -40} {1, -40} {2, -2}", recipeList[i].Name, recipeList[i].Category.ToString(), recipeList[i].CurrentNumberOfIngredients().ToString() );
             }
 
             return rtnStringArray;
         }
 
         /// <summary>
-        /// 
+        /// This method is used after deleted a recipe
+        /// Move all recipes down the array by 1 to make sure there are no empty spaces
         /// </summary>
         /// <param name="index"></param>
         private void MoveElementsOneStepToLeft(int index)

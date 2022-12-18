@@ -21,7 +21,6 @@ namespace Assignment4
 
         /// <summary>
         /// Constructor for the FormIngredients
-        /// Send reference for 
         /// </summary>
         /// <param name="recipe"></param>
         public FormIngedients(Recipe recipe)
@@ -36,6 +35,7 @@ namespace Assignment4
         /// </summary>
         public void InitializeGUI()
         {
+            this.Text = "Add Ingredients";
             txtNameIngedient.Text = string.Empty;
             UpdateGUI();
         }
@@ -60,7 +60,15 @@ namespace Assignment4
         /// <param name="e"></param>
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            bool success = Recipe.AddIngredient(txtNameIngedient.Text);
+            bool success;
+
+            if (recipe.CurrentNumberOfIngredients() < recipe.MaxNumberOfIngedients)
+                success = Recipe.AddIngredient(txtNameIngedient.Text);
+            else
+            {
+                MessageBox.Show("Maximum number of ingredients reached", "Error");
+                return;
+            }
 
             if (!success)
                 MessageBox.Show("Add ingredient failed", "Error");
@@ -79,6 +87,12 @@ namespace Assignment4
         private void BtnEdit_Click_Click(object sender, EventArgs e)
         {
             int index = lstIngedients.SelectedIndex;
+
+            if (String.IsNullOrEmpty(txtNameIngedient.Text))
+            {
+                MessageBox.Show("Write an ingredient to replace current selected", "Error");
+                return;
+            }
 
             if (index >= 0)
             {

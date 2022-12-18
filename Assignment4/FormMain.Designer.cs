@@ -57,26 +57,30 @@
             this.grpAddRecipe.Controls.Add(this.lblCategory);
             this.grpAddRecipe.Controls.Add(this.txtNameOfRecipe);
             this.grpAddRecipe.Controls.Add(this.lblNameOfRecipe);
-            this.grpAddRecipe.Location = new System.Drawing.Point(39, 36);
+            this.grpAddRecipe.Location = new System.Drawing.Point(27, 22);
+            this.grpAddRecipe.Margin = new System.Windows.Forms.Padding(2);
             this.grpAddRecipe.Name = "grpAddRecipe";
-            this.grpAddRecipe.Size = new System.Drawing.Size(590, 654);
+            this.grpAddRecipe.Padding = new System.Windows.Forms.Padding(2);
+            this.grpAddRecipe.Size = new System.Drawing.Size(413, 392);
             this.grpAddRecipe.TabIndex = 0;
             this.grpAddRecipe.TabStop = false;
             this.grpAddRecipe.Text = "Add New Recipe";
             // 
             // txtInstructions
             // 
-            this.txtInstructions.Location = new System.Drawing.Point(28, 196);
+            this.txtInstructions.Location = new System.Drawing.Point(20, 118);
+            this.txtInstructions.Margin = new System.Windows.Forms.Padding(2);
             this.txtInstructions.Multiline = true;
             this.txtInstructions.Name = "txtInstructions";
-            this.txtInstructions.Size = new System.Drawing.Size(513, 362);
+            this.txtInstructions.Size = new System.Drawing.Size(360, 219);
             this.txtInstructions.TabIndex = 7;
             // 
             // btnAddRecipe
             // 
-            this.btnAddRecipe.Location = new System.Drawing.Point(26, 584);
+            this.btnAddRecipe.Location = new System.Drawing.Point(18, 350);
+            this.btnAddRecipe.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddRecipe.Name = "btnAddRecipe";
-            this.btnAddRecipe.Size = new System.Drawing.Size(513, 34);
+            this.btnAddRecipe.Size = new System.Drawing.Size(359, 20);
             this.btnAddRecipe.TabIndex = 6;
             this.btnAddRecipe.Text = "Add recipe";
             this.btnAddRecipe.UseVisualStyleBackColor = true;
@@ -86,16 +90,18 @@
             // 
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(122, 112);
+            this.cmbCategory.Location = new System.Drawing.Point(85, 67);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(182, 33);
+            this.cmbCategory.Size = new System.Drawing.Size(129, 23);
             this.cmbCategory.TabIndex = 4;
             // 
             // btnAddIngredients
             // 
-            this.btnAddIngredients.Location = new System.Drawing.Point(359, 113);
+            this.btnAddIngredients.Location = new System.Drawing.Point(251, 68);
+            this.btnAddIngredients.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddIngredients.Name = "btnAddIngredients";
-            this.btnAddIngredients.Size = new System.Drawing.Size(180, 34);
+            this.btnAddIngredients.Size = new System.Drawing.Size(126, 20);
             this.btnAddIngredients.TabIndex = 3;
             this.btnAddIngredients.Text = "Add Ingredients";
             this.btnAddIngredients.UseVisualStyleBackColor = true;
@@ -104,71 +110,80 @@
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(26, 120);
+            this.lblCategory.Location = new System.Drawing.Point(18, 72);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(84, 25);
+            this.lblCategory.Size = new System.Drawing.Size(55, 15);
             this.lblCategory.TabIndex = 2;
             this.lblCategory.Text = "Category";
             // 
             // txtNameOfRecipe
             // 
-            this.txtNameOfRecipe.Location = new System.Drawing.Point(165, 45);
+            this.txtNameOfRecipe.Location = new System.Drawing.Point(116, 27);
+            this.txtNameOfRecipe.Margin = new System.Windows.Forms.Padding(2);
             this.txtNameOfRecipe.Name = "txtNameOfRecipe";
-            this.txtNameOfRecipe.Size = new System.Drawing.Size(374, 31);
+            this.txtNameOfRecipe.Size = new System.Drawing.Size(263, 23);
             this.txtNameOfRecipe.TabIndex = 1;
             // 
             // lblNameOfRecipe
             // 
             this.lblNameOfRecipe.AutoSize = true;
-            this.lblNameOfRecipe.Location = new System.Drawing.Point(28, 48);
+            this.lblNameOfRecipe.Location = new System.Drawing.Point(20, 29);
+            this.lblNameOfRecipe.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNameOfRecipe.Name = "lblNameOfRecipe";
-            this.lblNameOfRecipe.Size = new System.Drawing.Size(133, 25);
+            this.lblNameOfRecipe.Size = new System.Drawing.Size(88, 15);
             this.lblNameOfRecipe.TabIndex = 0;
             this.lblNameOfRecipe.Text = "Name of recipe";
             // 
             // lblListRecipt
             // 
             this.lblListRecipt.AutoSize = true;
-            this.lblListRecipt.Location = new System.Drawing.Point(783, 57);
+            this.lblListRecipt.Location = new System.Drawing.Point(548, 34);
+            this.lblListRecipt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblListRecipt.Name = "lblListRecipt";
-            this.lblListRecipt.Size = new System.Drawing.Size(59, 25);
+            this.lblListRecipt.Size = new System.Drawing.Size(39, 15);
             this.lblListRecipt.TabIndex = 1;
             this.lblListRecipt.Text = "Name";
             // 
             // lblListCategory
             // 
             this.lblListCategory.AutoSize = true;
-            this.lblListCategory.Location = new System.Drawing.Point(955, 57);
+            this.lblListCategory.Location = new System.Drawing.Point(668, 34);
+            this.lblListCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblListCategory.Name = "lblListCategory";
-            this.lblListCategory.Size = new System.Drawing.Size(84, 25);
+            this.lblListCategory.Size = new System.Drawing.Size(55, 15);
             this.lblListCategory.TabIndex = 2;
             this.lblListCategory.Text = "Category";
             // 
             // lblListNumIngedients
             // 
             this.lblListNumIngedients.AutoSize = true;
-            this.lblListNumIngedients.Location = new System.Drawing.Point(1200, 61);
+            this.lblListNumIngedients.Location = new System.Drawing.Point(840, 37);
+            this.lblListNumIngedients.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblListNumIngedients.Name = "lblListNumIngedients";
-            this.lblListNumIngedients.Size = new System.Drawing.Size(149, 25);
+            this.lblListNumIngedients.Size = new System.Drawing.Size(98, 15);
             this.lblListNumIngedients.TabIndex = 3;
             this.lblListNumIngedients.Text = "No. of ingedients";
             // 
             // lstRecipe
             // 
             this.lstRecipe.FormattingEnabled = true;
-            this.lstRecipe.ItemHeight = 25;
-            this.lstRecipe.Location = new System.Drawing.Point(757, 115);
+            this.lstRecipe.ItemHeight = 15;
+            this.lstRecipe.Location = new System.Drawing.Point(530, 69);
+            this.lstRecipe.Margin = new System.Windows.Forms.Padding(2);
             this.lstRecipe.Name = "lstRecipe";
-            this.lstRecipe.Size = new System.Drawing.Size(631, 479);
+            this.lstRecipe.Size = new System.Drawing.Size(443, 289);
             this.lstRecipe.TabIndex = 4;
             this.lstRecipe.SelectedIndexChanged += new System.EventHandler(this.LstRecipe_SelectedIndexChanged);
             this.lstRecipe.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LstRecipe_MouseDoubleClick);
             // 
             // btnEditStart
             // 
-            this.btnEditStart.Location = new System.Drawing.Point(757, 620);
+            this.btnEditStart.Enabled = false;
+            this.btnEditStart.Location = new System.Drawing.Point(530, 372);
+            this.btnEditStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditStart.Name = "btnEditStart";
-            this.btnEditStart.Size = new System.Drawing.Size(112, 34);
+            this.btnEditStart.Size = new System.Drawing.Size(78, 20);
             this.btnEditStart.TabIndex = 5;
             this.btnEditStart.Text = "Edit-Begin";
             this.btnEditStart.UseVisualStyleBackColor = true;
@@ -177,9 +192,10 @@
             // btnEditFinish
             // 
             this.btnEditFinish.Enabled = false;
-            this.btnEditFinish.Location = new System.Drawing.Point(930, 620);
+            this.btnEditFinish.Location = new System.Drawing.Point(651, 372);
+            this.btnEditFinish.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditFinish.Name = "btnEditFinish";
-            this.btnEditFinish.Size = new System.Drawing.Size(112, 34);
+            this.btnEditFinish.Size = new System.Drawing.Size(78, 20);
             this.btnEditFinish.TabIndex = 6;
             this.btnEditFinish.Text = "Edit-Finish";
             this.btnEditFinish.UseVisualStyleBackColor = true;
@@ -187,9 +203,11 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(1103, 620);
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(772, 372);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(112, 34);
+            this.btnDelete.Size = new System.Drawing.Size(78, 20);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -197,9 +215,10 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(1276, 620);
+            this.btnClear.Location = new System.Drawing.Point(893, 372);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(112, 34);
+            this.btnClear.Size = new System.Drawing.Size(78, 20);
             this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Clear Selection";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -208,17 +227,18 @@
             // lblInstructions
             // 
             this.lblInstructions.AutoSize = true;
-            this.lblInstructions.Location = new System.Drawing.Point(847, 680);
+            this.lblInstructions.Location = new System.Drawing.Point(593, 408);
+            this.lblInstructions.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Size = new System.Drawing.Size(494, 25);
+            this.lblInstructions.Size = new System.Drawing.Size(329, 15);
             this.lblInstructions.TabIndex = 9;
             this.lblInstructions.Text = "Double click on item for ingediants and cooking instructions!";
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1454, 724);
+            this.ClientSize = new System.Drawing.Size(1018, 434);
             this.Controls.Add(this.lblInstructions);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
@@ -229,6 +249,7 @@
             this.Controls.Add(this.lblListCategory);
             this.Controls.Add(this.lblListRecipt);
             this.Controls.Add(this.grpAddRecipe);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.Text = "Form1";
             this.grpAddRecipe.ResumeLayout(false);

@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 namespace Assignment4
 {
     /// <summary>
-    /// Every recipe has:
-    /// - a name
-    /// - a category as listed in the enum FoodCategory
-    /// - a list of ingredients (strings)
-    /// - a description (instructions)
+    /// Class representing a recipe, consists of a name, a category, a list of ingredients (strings) and a description (instructions)
+    /// Max number of ingredients is set in the constructor
     /// </summary>
     public class Recipe
     {
         private readonly uint maxNumberOfIngredients;
-        private string name;
+        private string name = string.Empty;
         private string[] ingredients;
-        private string instructions;
+        private string instructions = string.Empty;
         private FoodCategory category;
 
         /// <summary>
@@ -94,7 +91,7 @@ namespace Assignment4
 
 
         /// <summary>
-        /// Takes a string and adds to an array of string ingredients
+        /// Takes an ingredient as a string and adds it to an array of string ingredients
         /// </summary>
         /// <param name="index"></param>
         /// <param name="value"></param>
@@ -103,7 +100,8 @@ namespace Assignment4
         public bool AddIngredient(string value)
         {
             int firstVacantPosition = FindVacantPosition();
-            if (!String.IsNullOrEmpty(value) && firstVacantPosition >= 0 && firstVacantPosition < maxNumberOfIngredients - 1)
+
+            if (!String.IsNullOrEmpty(value) && firstVacantPosition >= 0 && firstVacantPosition < maxNumberOfIngredients)
             {
                 ingredients[firstVacantPosition] = value;
                 return true;
@@ -121,21 +119,24 @@ namespace Assignment4
         /// <returns></returns>
         public bool CheckIngredientAt(int index)
         {
-            return ingredients[index] != null;
+            return !string.IsNullOrEmpty(ingredients[index]);
         }
 
         /// <summary>
-        /// 
+        /// Check whether there is a non-empty string at the given index position
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
+        /// 
+        /* Given as part of the assignment but not used
         private bool CheckIndex(int index)
         {
             return ingredients[index] != null;
         }
+        */
 
         /// <summary>
-        /// 
+        /// Count the number of non empty strings
         /// </summary>
         /// <returns></returns>
         public uint CurrentNumberOfIngredients()
@@ -143,7 +144,7 @@ namespace Assignment4
             uint currNumIngredients = 0;
             for (int i = 0; i < maxNumberOfIngredients; i++)
             {
-                if (CheckIndex(i))
+                if (CheckIngredientAt(i))
                     currNumIngredients += 1;
             }
 
@@ -151,20 +152,24 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Fill ingredient string array with empty strings
         /// </summary>
         public void DefaultValues()
         {
-
+            for (int i = 0; i <= ingredients.Length; i++)
+            {
+                ingredients[i] = string.Empty;
+            }
         }
 
         /// <summary>
-        /// 
+        /// Remove the ingredient at the index position by setting the string to empty
+        /// Then move all the ingredients above that index down by 1 so there's no gaps.
         /// </summary>
-        /// <param name="indwx"></param>
+        /// <param name="index"></param>
         public void DeleteIngedientAt(int index)
         {
-            if (index < ingredients.Length)
+            if (index >= 0 && index < ingredients.Length)
             {
                 ingredients[index] = string.Empty;
                 MoveElementsOneStepToLeft(index);
@@ -172,7 +177,8 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Find the first free position in the array of ingredients
+        /// Return -1 if array is full
         /// </summary>
         /// <returns></returns>
         public int FindVacantPosition()
@@ -187,7 +193,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Return a single string with all the recipe ingredients separated by a comma
         /// </summary>
         /// <returns></returns>
         public string GetIngredientsString()
@@ -210,12 +216,13 @@ namespace Assignment4
         /// 
         /// </summary>
         /// <returns></returns>
+        /* Given as part of the assignment but not used     
         public string ToString()
         {
             string returnString = string.Empty;
 
             return returnString;
-        }
+        }*/
 
         private void MoveElementsOneStepToLeft(int index)
         {
