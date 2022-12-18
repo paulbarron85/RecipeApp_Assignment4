@@ -155,7 +155,9 @@ namespace Assignment4
             for (int i = 0; i < recipeList.Length; i++)
             {
                 if (recipeList[i] is not null)
-                    rtnStringArray[i] = string.Format("{0, -40} {1, -40} {2, -2}", recipeList[i].Name, recipeList[i].Category.ToString(), recipeList[i].CurrentNumberOfIngredients().ToString() );
+                    rtnStringArray[i] = string.Format("{0, -25} {1, -20} {2, -2}", recipeList[i].Name, recipeList[i].Category.ToString(), recipeList[i].CurrentNumberOfIngredients().ToString() );
+                    //rtnStringArray[i] = $"{recipeList[i].Name.PadRight(40,' ')}{recipeList[i].Category.ToString().PadRight(20, ' ')}{recipeList[i].CurrentNumberOfIngredients().ToString().PadRight(3,' ')}";
+
             }
 
             return rtnStringArray;

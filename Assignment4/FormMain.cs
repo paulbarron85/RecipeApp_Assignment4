@@ -48,7 +48,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Verify all input has been filled for recipe and then add it to the reipe manager
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -100,7 +100,8 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Begin editing the currently selected recipe
+        /// Check that a recipe has been selected and if so disable while in edit mode
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -131,7 +132,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Finish the editing mode and re-enable buttons that had been disabled
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -156,7 +157,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Open currently selected recipe in a new popup window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -173,7 +174,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Clear all entered data and create an object for a new recipe
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -184,7 +185,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Clear list box selection and any text entered for current recipe
         /// </summary>
         private void ClearSelection()
         {
@@ -195,18 +196,19 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Set up fields for new GUI
         /// </summary>
         public void InitializeGUI()
         {
             txtNameOfRecipe.Text = string.Empty;
             cmbCategory.SelectedIndex = -1;
             txtInstructions.Text = string.Empty;
+            lstRecipe.Font = new Font(FontFamily.GenericMonospace.Name, 9);
             this.Text = "Paul's Recipe Manager";
         }
 
         /// <summary>
-        /// 
+        /// Update List box with all recipes
         /// </summary>
         public void UpdateGUI()
         {
@@ -221,7 +223,7 @@ namespace Assignment4
         }
 
         /// <summary>
-        /// 
+        /// Change options/buttons available to user based on which recipe (if any) is selected
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

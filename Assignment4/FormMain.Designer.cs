@@ -148,7 +148,7 @@
             // lblListCategory
             // 
             this.lblListCategory.AutoSize = true;
-            this.lblListCategory.Location = new System.Drawing.Point(668, 34);
+            this.lblListCategory.Location = new System.Drawing.Point(730, 34);
             this.lblListCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblListCategory.Name = "lblListCategory";
             this.lblListCategory.Size = new System.Drawing.Size(55, 15);

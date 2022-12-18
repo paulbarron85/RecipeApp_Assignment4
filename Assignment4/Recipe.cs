@@ -156,9 +156,12 @@ namespace Assignment4
         /// </summary>
         public void DefaultValues()
         {
-            for (int i = 0; i <= ingredients.Length; i++)
+            if (CurrentNumberOfIngredients() > 0)
             {
-                ingredients[i] = string.Empty;
+                for (int i = 0; i < ingredients.Length; i++)
+                {
+                    ingredients[i] = string.Empty;
+                }
             }
         }
 
@@ -205,7 +208,7 @@ namespace Assignment4
 
             for (int i = 1; i < maxNumberOfIngredients; i++)
             {
-                if (ingredients[i] is not null)
+                if (!string.IsNullOrEmpty(ingredients[i]))
                     combinedIngredients += ", " + ingredients[i];
             }
 
